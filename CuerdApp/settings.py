@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+from django.conf.global_settings import DEFAULT_FROM_EMAIL
+
+import inscripcion_newsletter.apps
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core.apps.Core'
+    'core.apps.Core',
+    'inscripcion_newsletter.apps.InscripcionNewsletterConfig'
 
 ]
 
@@ -63,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'inscripcion_newsletter.context_processors.newsletter_form',
             ],
         },
     },
@@ -132,4 +138,6 @@ EMAIL_USE_TLS= True
 EMAIL_PORT= 587
 EMAIL_HOST_USER= 'elenapedrazapalomo@gmail.com'
 EMAIL_HOST_PASSWORD= 'imkz tqzj gixn uuqo'
+DEFAULT_FROM_EMAIL= 'Soporte CuerdApp <contacto@cuerdapp.com>'
+
 
